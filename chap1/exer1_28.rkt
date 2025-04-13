@@ -2,7 +2,8 @@
 
 (define (square x) (* x x))
 
-;It is possible to prove that if such a nontrivial square root of 1 exists, then n is not prime
+;It is possible to prove that if such a nontrivial square root of 1 exists, 
+then n is not prime
 
 ;Miller-Rabin test
 
@@ -14,7 +15,9 @@
          (remainder (* base (expmod base (- exp 1) m))
                     m))))
 
-;procedure returns 0 if n is a non-trival square root of 1 modulo m, otherwise it returns the square of n modulo m
+;procedure returns 0 if n is a non-trival square root of 1 modulo m, 
+otherwise it returns the square of n modulo m
+
 (define (check-nontrivial-sqrt n m)
   (let ((x (remainder (square n) m)))
     (if (and (not (= n 1)) (not (= n (- m 1))) (= x 1))

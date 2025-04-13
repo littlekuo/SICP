@@ -1,7 +1,7 @@
 #lang racket
 
 (define (sqrt-iter guess x)
-  (if (good-enough? guess x)
+  (if (good-enough? guess (improve guess x))
       guess
       (sqrt-iter (improve guess x) x)))
 
@@ -12,8 +12,8 @@
   (/ (+ x y) 2))
 
 ;
-(define (good-enough? guess x)
-  (= (improve guess x) guess))
+(define (good-enough? previous-guess guess)
+  (< (abs (/ (- guess previous-guess) guess)) 0.00000001))
 
 (define (my-sqrt x)
   (sqrt-iter 1.0 x))
